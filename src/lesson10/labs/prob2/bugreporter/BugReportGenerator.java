@@ -73,5 +73,23 @@ public class BugReportGenerator {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        //we can do it this way too
+        try {
+			PrintStream outPut = new PrintStream(new File("bug_report.txt"));
+			classes
+			.stream()
+			.filter(p -> p.isAnnotationPresent(BugReport.class))			
+			.forEach(p -> 
+			{			
+				BugReport l = (BugReport) p.getAnnotation(BugReport.class);					
+				outPut.println(l.assignedTo() + "\n " + REPORTED_BY  + l.reportedBy() + 			
+				 "\n " + CLASS_NAME  +  p.getName() + 
+				 "\n " + DESCRIPTION   + l.description() +  "\n " + SEVERITY  + l.severity() + "\n ");				
+			}
+			);
+		} catch (FileNotFoundException e) {
+			LOG.warning("IO Exception" + e.getMessage());
+			
+		}
     }
 }
