@@ -35,7 +35,7 @@ public class RaceCondition implements Runnable {
 
         //Remove check weather there are exactly 2000 nodes with value.
         //Check it by removing synchronized key word from add method of
-        //Queue Class to see NullPointerException thrown
+        //Queue Class to see NullPointerException thrown (you should try multiple times)
         for(int i=1;i<=2000;i++){
             Object value=queue.remove();
             if(value==(null)){
@@ -43,6 +43,7 @@ public class RaceCondition implements Runnable {
             }
 
         }
+
         System.out.println("No Race Condition detected !!!");
 
     }
