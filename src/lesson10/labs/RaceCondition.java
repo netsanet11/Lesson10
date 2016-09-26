@@ -1,5 +1,7 @@
 package lesson10.labs;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 /**
  * Created by Asme on 9/26/2016.
  */
@@ -39,7 +41,9 @@ public class RaceCondition implements Runnable {
             if(value==(null)){
                 throw new NullPointerException("Race problem detected. 2000 nodes has not been added.");
             }
+
         }
+        System.out.println("No Race Condition detected !!!");
 
     }
 
